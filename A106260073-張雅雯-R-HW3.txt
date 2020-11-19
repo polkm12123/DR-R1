@@ -1,0 +1,92 @@
+##2020/11/13(五), 109學年第一學期 資料科學應用 R作業(3)
+##學號:A106260073 姓名: 張雅雯
+
+##ex1.25 (a)
+library(readxl)
+student_score <- read_excel("data/R-score.xlsx", sheet = "工作表1",  na = "NA", skip=1)
+colnames(student_score) <- c("NO", "系級", "學號", "姓名", "Quiz1",  "Quiz2", "Quiz3", "Homework", "finaltest", "RollCall")
+head(student_score, 5)
+##ex1.25(b)
+str(student_score)
+
+mean(student_score$Quiz1)
+sd(student_score$Quiz1)
+
+mean(student_score$Quiz2)
+sd(student_score$Quiz2)
+
+mean(student_score$Quiz3)
+sd(student_score$Quiz3)
+
+mean(student_score$Homework)
+sd(student_score$Homework)
+
+mean(student_score$finaltest)
+sd(student_score$finaltest)
+##ex1.25(c)
+student_score_matrix <- data.frame(student_score$Quiz1, student_score$Quiz2, student_score$Quiz3, student_score$Homework, student_score$finaltest)
+str(student_score_matrix)
+student_score$Quiz1 <- (student_score$Quiz1)*0.1
+student_score$Quiz2 <- (student_score$Quiz2)*0.15
+student_score$Quiz3 <- (student_score$Quiz3)*0.15
+student_score$Homework <- (student_score$Homework)*0.2
+student_score$finaltest <-(student_score$finaltest)*0.4
+mean <- rowMeans(student_score_matrix)
+str(mean)
+student_score_all <-data.frame(student_score$學號, mean)
+student_score_all
+##ex1.29(a)
+library(readxl)
+student_score <- read_xlsx("data/R-score.xlsx")
+colnames(student_score) <- c("NO", "系級", "學號", "姓名", "Quiz1",  "Quiz2", "Quiz3", "Homework", "finaltest", "RollCall")
+
+head(Rscore,5)
+tail(Rscore,5)
+lapply(student_score,class)
+##ex1.29(b)
+library(readxl)
+weather <- read.table("data/20140714-weather.txt", header=TRUE)
+head(weather,5)
+tail(weather,5)
+lapply(weather,class)
+
+##ex1.29(c)
+library(readxl)
+weather_delays <- read.csv("data/weather_delays14.csv",header=TRUE,sep=",")
+head(weather_delays,5)
+tail(weather_delays,5)
+lapply(weather_delays,class)
+
+##ex2.10
+score <- sample(1:100, 50, replace = TRUE)
+ifelse (score >95,"老師請同學吃飯","老師很生氣")
+
+##ex2.21(a)
+score02_data <- read.csv("data/score02.csv", na = "NA", header = TRUE, sep=",")
+head(score02_data, 7)
+##ex2.21(b)
+colnames(score02_data) <- c("id", "mid", "final")
+str(score02_data)
+##ex2.21(c)
+A <- score02_data$mid
+B <- score02_data$final
+ifelse(B>A, score02_data$id, 0)
+##ex2.21(d)
+ifelse (A >= 60 & B >= 60, "ALL_pass",
+        ifelse (A >= 60, "mid_pass but final_fail",
+               ifelse ( B>= 60, "final_pass but mid_fail",
+                      "All_fail")
+
+
+
+##ex2.21(e)
+score02_data_AB <- data.frame(A,B)
+score02_data_mean <- rowMeans(score02_data_AB)
+score02_data_mean
+score02_data_new <- data.frame(score02_data$id, score02_data_mean)
+score02_data_new
+library(dplyr)
+score02_data_newarrange <- arrange(score02_data_new, desc(score02_data_mean))
+score02_data_newarrange
+
+
