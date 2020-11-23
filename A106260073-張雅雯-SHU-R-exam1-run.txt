@@ -1,0 +1,105 @@
+2020/11/20(五), 109學年第一學期 資料科學應用 R小考(1)
+
+學號:A106260073        姓名: 張雅雯
+
+# (請依照規定)貼上執行程式碼及執行結果。
+詳見: R程式作業繳交方式
+http://www.hmwu.idv.tw/web/teaching/doc/R-how-homework.pdf
+
+> # ex1(a)
+
+library(readxl)
+> getwd()
+[1] "C:/Users/張啟 生/Desktop"
+> dir("data")
+ [1] "20140714-weather.txt"      
+ [2] "Calculus-score-A.csv"      
+ [3] "Calculus-score-B.xls"      
+ [4] "elections-2000.csv"        
+ [5] "iris-data0.txt"            
+ [6] "iris-data1.txt"            
+ [7] "iris-data2.txt"            
+ [8] "iris-data3.txt"            
+ [9] "R-score.xlsx"              
+[10] "sale.txt"                  
+[11] "score02.csv"               
+[12] "statlog_vehicle_846x18.txt"
+[13] "stock-data.txt"            
+[14] "test2.txt"                 
+[15] "weather_delays14.csv"      
+[16] "題目.png"                  
+> score_A <- read.csv("data/Calculus-score-A.csv")
+> colnames(score_A) <- c("quiz(1)", "quiz(2)", "quiz(3)", "quiz(4)", "TA",  "MidtermExam", "FinalExam", "Attendance")
+> head(score_A,5)
+  quiz(1)   quiz(2) quiz(3) quiz(4)
+1                                  
+2    座號      學號    姓名    性別
+3       1 401405008  希瑄彥      男
+4       2 401550880  張泓丞      男
+5       3 404550061  張安婕      女
+       TA MidtermExam FinalExam Attendance
+1 quiz(1)     quiz(2)   quiz(3)    quiz(4)
+2      7%          7%        8%         8%
+3      10           0         5         20
+4      25          40        70         87
+5      18          15        48         33
+    NA          NA        NA         NA
+1   TA MidtermExam FinalExam Attendance
+2  15%         25%       30%      Times
+3    0          55        50          2
+4   80          46        68          9
+5 86.7          54        79          9
+> tail(score_A,5)
+   quiz(1)   quiz(2) quiz(3) quiz(4) TA
+38      36 404550369  陳王霖      女 55
+39      37 404550420  何瑄穎      男 28
+40      38 404550431  沈泓霏      女 15
+41      39 404550442  許安霏      女 53
+42      40 404550453  李政宜      男 80
+   MidtermExam FinalExam Attendance   NA
+38          73        92         73  100
+39          10        35          3 66.7
+40          25        53         67 93.3
+41          60        80         72  100
+42         100        85        100  100
+   NA  NA NA
+38 72  81  9
+39 30   0  7
+40 29  42  9
+41 61  62  9
+42 95 100  3
+> 
+> score_B <- read_excel("data/Calculus-score-B.xls", sheet = "工作表1",  na = "NA", skip=1)
+New names:
+* `` -> ...1
+* `` -> ...2
+* `` -> ...3
+* `` -> ...4
+> colnames(score_B) <- c("quiz(1)", "quiz(2)", "quiz(3)", "quiz(4)", "TA",  "MidtermExam", "FinalExam", "Attendance")
+> head(score_B,5)
+# A tibble: 5 x 12
+  `quiz(1)` `quiz(2)` `quiz(3)` `quiz(4)`
+  <chr>     <chr>     <chr>     <chr>    
+1 座號      學號      姓名      性別     
+2 1         404550465 史文羽    男       
+3 2         404685071 鄭樺妤    男       
+4 3         404685084 張敬安    男       
+5 4         404685099 何筑亦    女       
+# ... with 8 more variables: TA <dbl>,
+#   MidtermExam <dbl>, FinalExam <dbl>,
+#   Attendance <dbl>, NA <dbl>, NA <dbl>,
+#   NA <dbl>, NA <chr>
+> tail(score_B,5)
+# A tibble: 5 x 12
+  `quiz(1)` `quiz(2)` `quiz(3)` `quiz(4)`
+  <chr>     <chr>     <chr>     <chr>    
+1 51        404685407 鄭鈺尤    女       
+2 52        404685905 楊宜路    男       
+3 53        404685013 張渝妤    男       
+4 54        404685119 廖暄安    男       
+5 55        499555916 楊毅亦    女       
+# ... with 8 more variables: TA <dbl>,
+#   MidtermExam <dbl>, FinalExam <dbl>,
+#   Attendance <dbl>, NA <dbl>, NA <dbl>,
+#   NA <dbl>, NA <chr>
+> 
