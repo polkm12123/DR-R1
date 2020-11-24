@@ -1,0 +1,94 @@
+ ###2020/10/23(五), 109學年第一學期 資料科學應用 R作業(1)
+> ###學號:A106260073 姓名:張雅雯
+> #ex1.7 (a)
+> MyLetter <- 5:1
+> rep(LETTERS[1:5],MyLetter)
+ [1] "A" "A" "A" "A" "A" "B" "B" "B" "B"
+[10] "C" "C" "C" "D" "D" "E"
+> #ex1.7(b)
+> x <- c("b", "d", "f", "h", "j", "l", "n", "p", "r", "t", "v", "x", "z", "a", "c", "e", "g",
++ "i", "k", "m", "o", "q", "s", "u", "w", "y")
+> 
+> x[seq(from=1,to=26,by=1)]
+ [1] "b" "d" "f" "h" "j" "l" "n" "p" "r"
+[10] "t" "v" "x" "z" "a" "c" "e" "g" "i"
+[19] "k" "m" "o" "q" "s" "u" "w" "y"
+> 
+> 
+> #rm(list=ls()) 
+> 
+> 
+> ##ex1.7(c)
+> set.seed(12345)
+> ##d=-n/n+1
+> seq(from=1,to=-1/100,by=-1/2)
+[1] 1.0 0.5 0.0
+> 
+> ##ex1.7(d)
+> c <- month.abb
+> c
+ [1] "Jan" "Feb" "Mar" "Apr" "May" "Jun"
+ [7] "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"
+> c[seq(from=1,to=12,by=2)]
+[1] "Jan" "Mar" "May" "Jul" "Sep" "Nov"
+> 
+> ##ex1.23(a)
+> math.score <- c(43,94,20,8,46,72,93,8,28,33,79,60,93,52,8)
+> ##ex1.23(b)
+> length(math.score)
+[1] 15
+> ##ex1.23(c)
+> 
+> rm(list=ls()) 
+> ##ex1.23(d)
+> math.score <- c(43,94,20,8,46,72,93,8,28,33,79,60,93,52,8)
+> math.score >= 60
+ [1] FALSE  TRUE FALSE FALSE FALSE  TRUE
+ [7]  TRUE FALSE FALSE FALSE  TRUE  TRUE
+[13]  TRUE FALSE FALSE
+> id <- math.score >=60
+> math.score[id]
+[1] 94 72 93 79 60 93
+> math.score[math.score >=60]
+[1] 94 72 93 79 60 93
+> mean(math.score[math.score >=60])
+[1] 81.83333
+> 
+> 
+> #ex1.37 (a)
+> age <- c(54,64,75,21,66,49,25,72,50,72)
+> gender <- c("女","男","男","女","女","男","男","女","男","女")
+> index <- c(86,30,NA,43,35,42,31,7,29,80)
+> sat <-c ( "滿意","非常滿意","非常不滿意","非常滿意","普通","非常不滿意","普通","滿意","普通","非常滿意")
+> sort(sat)
+ [1] "非常不滿意" "非常不滿意" "非常滿意"  
+ [4] "非常滿意"   "非常滿意"   "普通"      
+ [7] "普通"       "普通"       "滿意"      
+[10] "滿意"      
+> rank(sat)
+ [1] 9.5 4.0 1.5 4.0 7.0 1.5 7.0 9.5 7.0
+[10] 4.0
+> #ex1.37 (b)
+> sort(sat)
+ [1] "非常不滿意" "非常不滿意" "非常滿意"  
+ [4] "非常滿意"   "非常滿意"   "普通"      
+ [7] "普通"       "普通"       "滿意"      
+[10] "滿意"      
+> 
+> #ex1.37(c)
+> age >= 40
+ [1]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE
+ [7] FALSE  TRUE  TRUE  TRUE
+> gender.m <- factor(gender)
+> gender.m[age>=40]
+[1] 女 男 男 女 男 女 男 女
+Levels: 女 男
+> index.m <- factor(index)
+> index.m
+ [1] 86   30   <NA> 43   35   42   31  
+ [8] 7    29   80  
+Levels: 7 29 30 31 35 42 43 80 86
+> index.m [gender.m [age >= 40]]
+[1] 86 30 30 86 30 86 30 86
+Levels: 7 29 30 31 35 42 43 80 86
+> 
