@@ -1,0 +1,115 @@
+# 2020/12/11(五), 109學年第一學期 資料科學應用 R期中考
+
+學號:   A106260073    姓名: 張雅雯
+
+# (請依照規定)貼上執行程式碼及執行結果。
+詳見: R程式作業繳交方式
+http://www.hmwu.idv.tw/web/teaching/doc/R-how-homework.pdf
+
+#ex1: 順序序列
+> library(dplyr)
+> 
+> 
+> #ex2:
+> library(readxl)
+> getwd()
+[1] "C:/Users/張啟 生/Documents"
+> dir()
+ [1] "10501.xlsx"        
+ [2] "data"              
+ [3] "desktop.ini"       
+ [4] "FeedbackHub"       
+ [5] "LDPlayer"          
+ [6] "My Music"          
+ [7] "My Pictures"       
+ [8] "My Videos"         
+ [9] "Python Scripts"    
+[10] "R"                 
+[11] "Visual Studio 2019"
+[12] "自訂 Office 範本"  
+> dir("data")
+ [1] "1126.png"                             
+ [2] "20140714-weather.txt"                 
+ [3] "A106260073-張雅雯-SHU-R-exam1-run.txt"
+ [4] "Calculus-score-A.csv"                 
+ [5] "Calculus-score-B.xls"                 
+ [6] "elections-2000.csv"                   
+ [7] "iris-data0.txt"                       
+ [8] "iris-data1.txt"                       
+ [9] "iris-data2.txt"                       
+[10] "iris-data3.txt"                       
+[11] "R-score.xlsx"                         
+[12] "sale.txt"                             
+[13] "Score-109.xlsx"                       
+[14] "score02.csv"                          
+[15] "statlog_vehicle_846x18.txt"           
+[16] "stock-data.txt"                       
+[17] "test2.txt"                            
+[18] "weather_delays14.csv"                 
+[19] "題目.png"                             
+> score <- read_xlsx("data/Score-109.xlsx")
+New names:
+* `` -> ...2
+* `` -> ...3
+> score[is.na(score)] <- 0
+> colnames(score) <- c("ID", "Calculus", "English")
+> head(score,6)
+# A tibble: 6 x 3
+  ID    Calculus English
+  <chr> <chr>    <chr>  
+1 ID    Calculus English
+2 No.1  72       62     
+3 No.2  88       97     
+4 No.3  76       66     
+5 No.4  89       51     
+6 No.5  46       15     
+> tail(score,6)
+# A tibble: 6 x 3
+  ID    Calculus English
+  <chr> <chr>    <chr>  
+1 No.70 95       14     
+2 No.71 69       96     
+3 No.72 51       100    
+4 No.73 37       50     
+5 No.74 33       92     
+6 No.75 4        37     
+> 
+> ifelse ("Calculus"<=60 & "English"<=60){
+錯誤: 未預期的 '{' in "ifelse ("Calculus"<=60 & "English"<=60){"
+>   print(score)
+# A tibble: 76 x 3
+   ID    Calculus English
+   <chr> <chr>    <chr>  
+ 1 ID    Calculus English
+ 2 No.1  72       62     
+ 3 No.2  88       97     
+ 4 No.3  76       66     
+ 5 No.4  89       51     
+ 6 No.5  46       15     
+ 7 No.6  16       87     
+ 8 No.7  32       51     
+ 9 No.8  51       0      
+10 No.9  73       1      
+# ... with 66 more rows
+> }
+錯誤: 未預期的 '}' in "}"
+> data(mtcars)
+> my.cor <- score
+> head(my.cor, 6)
+# A tibble: 6 x 3
+  ID    Calculus English
+  <chr> <chr>    <chr>  
+1 ID    Calculus English
+2 No.1  72       62     
+3 No.2  88       97     
+4 No.3  76       66     
+5 No.4  89       51     
+6 No.5  46       15     
+> res <- cor(my.cor)
+Error in cor(my.cor) : 'x' must be numeric
+> 
+> #ex3
+> my.dnorm  <- dnorm(2.5, mean = 3, sd = 1)
+> 
+> my.matrix <- matrix(1:21,ncol=3)
+> 
