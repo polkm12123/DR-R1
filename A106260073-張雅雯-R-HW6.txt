@@ -1,0 +1,22 @@
+2020/12/18(五), 109學年第一學期 資料科學應用 R作業(6)
+
+學號:A106260073        姓名: 張雅雯
+
+> #2.9(a) 
+> set.seed(12345)
+> number <- sample(0:100, 1000, replace=T)
+> number_for <- function(x){
++   t <- 0
++   result <- 0
++   for(i in number){
++     if(i %% 2 == 0){
++       result <- result+1
++       t <- t+1
++     }
++     if(t>x)break
++     ans <- i
++     }
++   ans
++  }
+> number_for(100)
+[1] 62
