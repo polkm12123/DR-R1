@@ -1,0 +1,44 @@
+ #1.1
+> set.seed(123456)
+> ball <- c("白球","紅球")
+> bag <- rep(ball, c(5, 3))
+> s <- sample(bag, 4)
+> table(s)
+s
+白球 紅球 
+   3    1 
+> #1.2
+> Draw_Ball<- function(){
++   ball <- c("白球","紅球")
++   bag <- rep(ball,c(5,3))
++   ans <- sample(bag,4)
++   table(factor(ans,levels=ball))
++ }
+> set.seed(123456)
+> DrawResult <- as.data.frame(t(replicate(10, Draw_Ball())))
+> DrawResult
+   白球 紅球
+1     3    1
+2     2    2
+3     2    2
+4     2    2
+5     2    2
+6     3    1
+7     2    2
+8     2    2
+9     2    2
+10    1    3
+> #1.3
+> n=10
+> set.seed(123456)
+> DrawResult <- as.data.frame(t(replicate(n, Draw_Ball())))
+> sum((DrawResult$白球==2) & (DrawResult$紅球==2))/n
+[1] 0.7
+> 
+> #1.4
+> n=1000
+> set.seed(123456)
+> DrawResult <- as.data.frame(t(replicate(n, Draw_Ball())))
+> sum((DrawResult$白球==2) & (DrawResult$紅球==2))/n
+[1] 0.432
+> 
